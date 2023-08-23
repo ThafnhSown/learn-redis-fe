@@ -1,6 +1,7 @@
 import './App.css';
 import Cookies from 'universal-cookie';
 import axios from 'axios'
+import { COOKIE_OPTIONS } from './constant/index';
 const cookies = new Cookies()
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
     .then((response) => {
       console.log(response)
       
-      cookies.set('access_token', response?.data?.accessToken)
-      cookies.set('refresh_token', response?.data?.refreshToken)
+      cookies.set('access_token', response?.data?.accessToken, COOKIE_OPTIONS)
+      cookies.set('refresh_token', response?.data?.refreshToken, COOKIE_OPTIONS)
       
     })
     
@@ -50,8 +51,8 @@ function App() {
       refreshToken, deviceId
     }).then(response => {
       console.log(response)
-      cookies.set("access_token", response.data.accessToken)
-      cookies.set("refresh_token", response.data.refreshToken)
+      cookies.set("access_token", response.data.accessToken, COOKIE_OPTIONS)
+      cookies.set("refresh_token", response.data.refreshToken, COOKIE_OPTIONS)
     })
   }
 
