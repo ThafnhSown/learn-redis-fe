@@ -39,9 +39,7 @@ function App() {
 
   const handleList = async (req, res, next) => {
     return await axios.get("http://localhost:3001/user/list", {
-      headers: {
-        Authorization: 'Bearer ' + cookies.get('access_token')
-      }
+      withCredentials: true
     })
     .then((response) => {
       console.log(response)
